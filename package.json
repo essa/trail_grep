@@ -28,15 +28,23 @@
   "bin": {
     "trailgrep": "./bin/trailgrep"
   },
-  "main": "index.js",
+  "main": "lib/index.js",
   "engines": {
     "node": ">=0.8"
   },
   "scripts": {
+    "build-to5": "babel src --out-dir lib",
     "test": "mocha -R test"
   },
   "dependencies": {
     "minimist": "~0.0.8",
     "verbalize": "~0.1.1"
+  },
+  "devDependencies": {
+    "babel": "^4.6.6",
+    "jshint": "^2.6.3",
+    "jshint-stylish": "^1.0.1",
+    "mocha": "^2.1.0",
+    "power-assert": "^0.10.2"
   }
 }

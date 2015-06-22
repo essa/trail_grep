@@ -4,6 +4,7 @@ var fs = require('fs');
 var path = require('path');
 var log = require('verbalize');
 var argv = require('minimist')(process.argv.slice(2));
+var TrailGrep = require('..');
 
 
 /**
@@ -12,39 +13,11 @@ var argv = require('minimist')(process.argv.slice(2));
 
 
 // Verbalize `runner`
-log.runner = 'trail-grep';
+log.runner = 'trailgrep';
 
-// Use `-f` or `--file` to specify the source file
-var file  = argv._[0] || argv.f || argv.file || 'TODO.md';
+log.writeln('start ' + log.runner);
 
-// Use `-t` or `--task` to specify the text to append
-var task = argv._[1] || argv.t || argv.task;
+console.log(TrailGrep);
+TrailGrep.Main();
 
-
-if (!file) {
-  log.error('Please provide a source file, either as a first argument or with `-s`');
-}
-
-if (!task) {
-  log.error('No tasks will be appended to "' + file + '" since you didn\'t specify anything.');
-}
-
-
-/**
- * Application
- */
-
-
-if(!fs.existsSync(file)) {
-  fs.writeFileSync(file, '# Tasks\n\n');
-}
-
-fs.appendFile(file, ('- [ ] ' + task + '\n'), function (err) {
-  if (err) {throw err;}
-
-  log.writeln();
-  log.writeln(log.gray('  todo [appended] ') + '\'' + task + '\' to ' + log.bold(file));
-
-  // If all is well, log a success message.
-  log.success('  ' + log.runner + ' [done]');
-});
+log.success(log.runner + ' [done]');
