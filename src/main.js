@@ -1,6 +1,8 @@
 
+import log from 'verbalize';
+
 function main() {
-  console.log('start main');
+  log.verbose.writeln('start main');
 }
 
 export default main;

@@ -14,10 +14,10 @@ var TrailGrep = require('..');
 
 // Verbalize `runner`
 log.runner = 'trailgrep';
+log.mode.verbose = argv.v?true:false;
 
-log.writeln('start ' + log.runner);
+log.verbose.info('start ' + log.runner);
 
-console.log(TrailGrep);
 TrailGrep.Main();
 
 log.success(log.runner + ' [done]');
