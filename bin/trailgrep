@@ -18,6 +18,7 @@ log.mode.verbose = argv.v?true:false;
 
 log.verbose.info('start ' + log.runner);
 
-TrailGrep.Main();
+var config = TrailGrep.config(argv);
+TrailGrep.Main(config);
 
 log.success(log.runner + ' [done]');

@@ -1,5 +1,6 @@
 "use strict";
 
 import Main from "./main";
+import config from "./config";
 
-export default { Main };
+export default { Main, config };
